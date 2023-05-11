@@ -1,6 +1,8 @@
 <template>
   <div>
-    <div class="typedText">{{ typedText }}</div>
+    <div class="typedText" :class="overflow == 'scroll' ? 'scroll' : ''">
+      {{ typedText }}
+    </div>
   </div>
 </template>
 
@@ -12,6 +14,10 @@ export default {
     loop: {
       type: Boolean,
       default: true,
+    },
+    overflow: {
+      type: String,
+      default: "auto",
     },
     speed: {
       type: Number,
@@ -39,6 +45,9 @@ export default {
       let timer = setInterval(() => {
         if (j < arr.length) {
           this.typedText += arr[j++];
+        } else if (j == arr.length) {
+          this.typedText += "";
+          j++;
         } else {
           if (k < this.typedList.length - 1) {
             k++;
@@ -69,5 +78,8 @@ export default {
   to {
     opacity: 1;
   }
+}
+.scroll {
+  overflow-x: auto;
 }
 </style>

@@ -9,9 +9,10 @@
                 <img class="cards" src="@/assets/imgs/headpic.jpg" alt="" />
                 <span>{{ $config.nameCn }}</span>
               </div>
-              <div class="blMid cards">
+              <div class="blMid1 cards">
                 <Typed :typedList="typedList" />
               </div>
+              <div class="blMid2 cards">hh</div>
               <div class="blBot">
                 <el-tooltip
                   effect="dark"
@@ -128,7 +129,10 @@ export default {
       timeInterval: "",
       contatctList: [],
       websiteList: [],
-      typedList: ["测试打字机第一行", "测试第二行"],
+      typedList: [
+        "测试打字机第一行啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊",
+        "测试第二行",
+      ],
     };
   },
   created() {
@@ -301,8 +305,15 @@ export default {
             font-family: KaiTi;
           }
         }
-        .blMid {
-          height: 240px;
+        .blMid1 {
+          height: 55px;
+          padding: 18px 20px;
+          margin-bottom: 20px;
+          display: flex;
+          align-items: center;
+        }
+        .blMid2 {
+          height: 180px;
           padding: 18px 20px;
         }
         .blBot {
