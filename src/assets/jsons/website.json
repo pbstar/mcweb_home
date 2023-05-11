@@ -1,0 +1,137 @@
+[
+  {
+    "name": "有道翻译",
+    "url": "https://fanyi.youdao.com/index.html#/",
+    "icon": "http://oss.mcweb.club/icons/home/qq.png",
+    "text": "",
+    "type": "1",
+    "width": "32px",
+    "height": "32px"
+  },
+  {
+    "name": "取色器",
+    "url": "https://link.fobshanghai.com/rgbcolor.htm",
+    "icon": "http://oss.mcweb.club/icons/home/wx.png",
+    "text": "",
+    "type": "1",
+    "width": "30px",
+    "height": "30px"
+  },
+  {
+    "name": "JSON解析",
+    "url": "https://c.runoob.com/front-end/7438/",
+    "icon": "http://oss.mcweb.club/icons/home/mail.png",
+    "text": "",
+    "type": "1",
+    "width": "32px",
+    "height": "32px"
+  },
+  {
+    "name": "阿里地图",
+    "url": "http://datav.aliyun.com/portal/school/atlas/area_selector",
+    "icon": "http://oss.mcweb.club/icons/home/github.png",
+    "text": "",
+    "type": "1",
+    "width": "30px",
+    "height": "30px"
+  },
+  {
+    "name": "迅捷压缩",
+    "url": "https://yasuo.xunjiepdf.com/",
+    "icon": "http://oss.mcweb.club/icons/home/csdn.png",
+    "text": "",
+    "type": "1",
+    "width": "28px",
+    "height": "28px"
+  },
+  {
+    "name": "七牛CDN",
+    "url": "https://www.staticfile.org/",
+    "icon": "http://oss.mcweb.club/icons/home/csdn.png",
+    "text": "",
+    "type": "1",
+    "width": "28px",
+    "height": "28px"
+  },
+  {
+    "name": "阿里图标",
+    "url": "https://www.iconfont.cn/",
+    "icon": "http://oss.mcweb.club/icons/home/csdn.png",
+    "text": "",
+    "type": "1",
+    "width": "28px",
+    "height": "28px"
+  },
+  {
+    "name": "Element",
+    "url": "https://element.eleme.cn/#/zh-CN/component/installation",
+    "icon": "http://oss.mcweb.club/icons/home/csdn.png",
+    "text": "",
+    "type": "1",
+    "width": "28px",
+    "height": "28px"
+  },
+  {
+    "name": "Vant",
+    "url": "https://vant-contrib.gitee.io/vant/v2/#/zh-CN/",
+    "icon": "http://oss.mcweb.club/icons/home/csdn.png",
+    "text": "",
+    "type": "1",
+    "width": "28px",
+    "height": "28px"
+  },
+  {
+    "name": "Layui",
+    "url": "https://layui.dev/docs/2.8/",
+    "icon": "http://oss.mcweb.club/icons/home/csdn.png",
+    "text": "",
+    "type": "1",
+    "width": "28px",
+    "height": "28px"
+  },
+  {
+    "name": "Echarts",
+    "url": "https://echarts.apache.org/examples/zh/index.html",
+    "icon": "http://oss.mcweb.club/icons/home/csdn.png",
+    "text": "",
+    "type": "1",
+    "width": "28px",
+    "height": "28px"
+  },
+  {
+    "name": "图表模板",
+    "url": "https://madeapie.com/#/",
+    "icon": "http://oss.mcweb.club/icons/home/csdn.png",
+    "text": "",
+    "type": "1",
+    "width": "28px",
+    "height": "28px"
+  },
+  {
+    "name": "wangEditer",
+    "url": "https://www.wangeditor.com/v5/getting-started.html",
+    "icon": "http://oss.mcweb.club/icons/home/csdn.png",
+    "text": "",
+    "type": "1",
+    "width": "28px",
+    "height": "28px"
+  },
+  {
+    "name": "西瓜播放器",
+    "url": "https://v3.h5player.bytedance.com/guide/",
+    "icon": "http://oss.mcweb.club/icons/home/csdn.png",
+    "text": "",
+    "type": "1",
+    "width": "28px",
+    "height": "28px"
+  },
+  {
+    "name": "在线工具",
+    "url": "https://tool.lu/",
+    "icon": "http://oss.mcweb.club/icons/home/csdn.png",
+    "text": "",
+    "type": "1",
+    "width": "28px",
+    "height": "28px"
+  }
+]

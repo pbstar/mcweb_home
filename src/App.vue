@@ -7,9 +7,29 @@
             <div class="boxleft">
               <div class="blTop">
                 <img class="cards" src="@/assets/imgs/headpic.jpg" alt="" />
-                <span>11</span>
+                <span>{{ $config.nameCn }}</span>
               </div>
-              <div class="blMid cards">资料</div>
+              <div class="blMid cards">
+                <Typed :typedList="typedList" />
+              </div>
+              <div class="blBot">
+                <el-tooltip
+                  effect="dark"
+                  :content="item.name"
+                  v-for="(item, index) in contatctList"
+                  :key="index"
+                  placement="bottom"
+                >
+                  <img
+                    :src="item.icon"
+                    :alt="item.name"
+                    :style="
+                      'width:' + item.width + ';height:' + item.height + ';'
+                    "
+                    @click="toContatct(item)"
+                  />
+                </el-tooltip>
+              </div>
             </div>
             <div class="boxRight">
               <div class="brTop">
@@ -33,12 +53,32 @@
                   </p>
                 </div>
               </div>
-              <div class="brBot"></div>
+              <div class="brBot">
+                <div
+                  class="brBotBox cards"
+                  v-for="(item, index) in websiteList"
+                  :key="index"
+                  :style="index % 3 == 0 ? 'margin-left:0;' : ''"
+                  @click="toWebBox(item)"
+                >
+                  <div class="imgbox">
+                    <img
+                      :src="item.icon"
+                      :alt="item.name"
+                      :style="
+                        'width:' + item.width + ';height:' + item.height + ';'
+                      "
+                    />
+                  </div>
+
+                  <span>{{ item.name }}</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="page">第二页</div>
-        <div class="page">最后一页</div>
+        <!-- <div class="page">第二页</div>
+        <div class="page">最后一页</div> -->
       </main>
     </div>
     <div class="footer">
@@ -64,8 +104,14 @@
 import cursorInit from "@/assets/js/cursor.js";
 import time from "@/assets/units/time.js";
 import Api from "@/server/api.js";
+import contatct from "@/assets/jsons/contact.json";
+import website from "@/assets/jsons/website.json";
+import Typed from "@/components/typed";
 export default {
   name: "App",
+  components: {
+    Typed,
+  },
   data() {
     return {
       screenType: "none",
@@ -80,11 +126,15 @@ export default {
       hitokotoFrom: "",
       time: "",
       timeInterval: "",
+      contatctList: [],
+      websiteList: [],
+      typedList: ["测试打字机第一行", "测试第二行"],
     };
   },
   created() {
-    //初始化鼠标
-    cursorInit();
+    cursorInit(); //初始化鼠标
+    this.contatctList = contatct;
+    this.websiteList = website;
     this.getConfig();
     this.getTime();
     window.addEventListener("resize", this.onResize());
@@ -179,6 +229,19 @@ export default {
         }
       }, 1000);
     },
+    toContatct(e) {
+      if (e.type == 1) {
+        window.open(e.url);
+      } else if (e.type == 2) {
+        this.$notify({
+          title: e.name,
+          message: e.text,
+          duration: 0,
+          position: "bottom-right",
+          dangerouslyUseHTMLString: true,
+        });
+      }
+    },
   },
 };
 </script>
@@ -197,6 +260,7 @@ export default {
       scroll-snap-type: y mandatory;
       overflow-y: scroll;
       overflow-x: hidden;
+      background-color: #00000020;
       .page {
         width: 100vw;
         height: 100vh;
@@ -211,28 +275,48 @@ export default {
   }
   .bigBox {
     .page1Box {
-      width: 1100px;
-      height: 500px;
+      width: 1200px;
+      height: 560px;
       display: flex;
       justify-content: space-between;
       .boxleft {
-        width: 500px;
+        width: 560px;
         .blTop {
           width: 100%;
           height: 160px;
           margin-bottom: 30px;
+          padding-top: 40px;
+          display: flex;
+          align-items: flex-end;
+          overflow: hidden;
           img {
-            width: 160px;
-            height: 160px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
+          }
+          span {
+            margin-left: 20px;
+            font-size: 50px;
+            text-shadow: -1px 0 3px #eeeeee;
+            font-family: KaiTi;
           }
         }
         .blMid {
-          height: 300px;
+          height: 240px;
+          padding: 18px 20px;
+        }
+        .blBot {
+          display: flex;
+          align-items: center;
+          height: 60px;
+          margin-top: 10px;
+          img {
+            margin-right: 10px;
+          }
         }
       }
       .boxRight {
-        width: 520px;
+        width: 560px;
         .brTop {
           width: 100%;
           height: 160px;
@@ -249,7 +333,7 @@ export default {
           }
           .brTLeft {
             padding: 18px 20px;
-            width: 230px;
+            width: 260px;
             display: flex;
             flex-direction: column;
             line-height: 30px;
@@ -266,7 +350,7 @@ export default {
           }
           .brTRight {
             padding: 18px 20px;
-            width: 270px;
+            width: 280px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -276,6 +360,26 @@ export default {
               font-family: "UnidreamLED";
               letter-spacing: 2px;
               font-size: 45px;
+            }
+          }
+        }
+        .brBot {
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+          flex-grow: 3;
+          justify-content: space-between;
+          .brBotBox {
+            width: 173px;
+            height: 55px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            .imgbox {
+              width: 60px;
+            }
+            img {
+              margin-left: 20px;
             }
           }
         }

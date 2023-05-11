@@ -6,17 +6,36 @@
   vertical-align: middle;
   position: relative;
   text-align: left;
-  .cell{
+
+  .cell {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
   }
+
   .el-button--text {
     padding: 3px 0px;
     font-size: 12px;
     border-radius: 3px;
+  }
 }
-}
-.el-dialog__body{
+
+.el-dialog__body {
   padding-top: 15px;
+}
+
+.el-notification {
+  background-color: #00000020;
+
+  .el-notification__title,
+  .el-notification__content,
+  .el-notification__closeBtn,
+  .el-notification__icon {
+    color: #fff;
+  }
+}
+
+.el-tooltip__popper.is-dark {
+  background: #00000020;
+  color: #FFF;
 }

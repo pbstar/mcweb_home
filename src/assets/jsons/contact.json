@@ -1,0 +1,47 @@
+[
+  {
+    "name": "QQ",
+    "url": "",
+    "icon": "http://oss.mcweb.club/icons/home/qq.png",
+    "text": "24612582",
+    "type": "2",
+    "width": "32px",
+    "height": "32px"
+  },
+  {
+    "name": "微信",
+    "url": "",
+    "icon": "http://oss.mcweb.club/icons/home/wx.png",
+    "text": "P24612582",
+    "type": "2",
+    "width": "30px",
+    "height": "30px"
+  },
+  {
+    "name": "邮箱",
+    "url": "",
+    "icon": "http://oss.mcweb.club/icons/home/mail.png",
+    "text": "pbstar@sina.cn",
+    "type": "2",
+    "width": "32px",
+    "height": "32px"
+  },
+  {
+    "name": "github",
+    "url": "https://github.com/pbstar",
+    "icon": "http://oss.mcweb.club/icons/home/github.png",
+    "text": "",
+    "type": "1",
+    "width": "30px",
+    "height": "30px"
+  },
+  {
+    "name": "CSDN",
+    "url": "https://blog.csdn.net/chuenst",
+    "icon": "http://oss.mcweb.club/icons/home/csdn.png",
+    "text": "",
+    "type": "1",
+    "width": "28px",
+    "height": "28px"
+  }
+]
