@@ -23,6 +23,10 @@ export default {
       type: Number,
       default: 200,
     },
+    scrollLength: {
+      type: Number,
+      default: 20,
+    },
   },
   data() {
     return {
@@ -44,6 +48,12 @@ export default {
       let arr = this.typedList[k].split("");
       let timer = setInterval(() => {
         if (j < arr.length) {
+          if (
+            this.overflow == "scroll" &&
+            this.typedText.length > this.scrollLength
+          ) {
+            this.typedText = this.typedText.slice(1);
+          }
           this.typedText += arr[j++];
         } else if (j == arr.length) {
           this.typedText += "";
@@ -80,6 +90,6 @@ export default {
   }
 }
 .scroll {
-  overflow-x: auto;
+  white-space: nowrap;
 }
 </style>

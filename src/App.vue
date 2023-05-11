@@ -10,7 +10,11 @@
                 <span>{{ $config.nameCn }}</span>
               </div>
               <div class="blMid1 cards">
-                <Typed :typedList="typedList" />
+                <Typed
+                  :typedList="typedList"
+                  overflow="scroll"
+                  :scrollLength="screenType == 'small' ? 17 : 31"
+                />
               </div>
               <div class="blMid2 cards">hh</div>
               <div class="blBot">
@@ -82,23 +86,7 @@
         <div class="page">最后一页</div> -->
       </main>
     </div>
-    <div class="footer">
-      <span
-        >Copyright&nbsp;&copy;&nbsp;2023
-        <a :href="$config.webUrl">{{ $config.nameCn }}</a>
-      </span>
-      <span class="hidden"
-        >&nbsp;&amp;&nbsp;Made&nbsp;by&nbsp;<a
-          :href="$config.githubUrl"
-          target="_blank"
-        >
-          {{ $config.nameEn }}
-        </a></span
-      >&nbsp;&amp;&nbsp;
-      <a href="https://beian.miit.gov.cn" target="_blank">{{
-        $config.beianCode
-      }}</a>
-    </div>
+    <webFooter :screenType="screenType" />
   </div>
 </template>
 <script>
@@ -108,10 +96,12 @@ import Api from "@/server/api.js";
 import contatct from "@/assets/jsons/contact.json";
 import website from "@/assets/jsons/website.json";
 import Typed from "@/components/typed";
+import webFooter from "@/components/footer";
 export default {
   name: "App",
   components: {
     Typed,
+    webFooter,
   },
   data() {
     return {
@@ -129,10 +119,7 @@ export default {
       timeInterval: "",
       contatctList: [],
       websiteList: [],
-      typedList: [
-        "测试打字机第一行啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊",
-        "测试第二行",
-      ],
+      typedList: ["hello", "欢迎光临我的主页"],
     };
   },
   created() {
@@ -246,6 +233,19 @@ export default {
         });
       }
     },
+    toWebBox(e) {
+      if (e.type == 1) {
+        window.open(e.url);
+      } else if (e.type == 2) {
+        this.$notify({
+          title: e.name,
+          message: e.text,
+          duration: 0,
+          position: "bottom-right",
+          dangerouslyUseHTMLString: true,
+        });
+      }
+    },
   },
 };
 </script>
@@ -287,9 +287,8 @@ export default {
         width: 560px;
         .blTop {
           width: 100%;
-          height: 160px;
+          height: 155px;
           margin-bottom: 30px;
-          padding-top: 40px;
           display: flex;
           align-items: flex-end;
           overflow: hidden;
@@ -311,6 +310,7 @@ export default {
           margin-bottom: 20px;
           display: flex;
           align-items: center;
+          overflow-x: auto;
         }
         .blMid2 {
           height: 180px;
@@ -331,7 +331,7 @@ export default {
         .brTop {
           width: 100%;
           height: 160px;
-          margin-bottom: 30px;
+          margin-bottom: 20px;
           display: flex;
           justify-content: space-between;
           .brTLeft,
@@ -381,41 +381,83 @@ export default {
           flex-grow: 3;
           justify-content: space-between;
           .brBotBox {
-            width: 173px;
+            width: 175px;
             height: 55px;
-            margin-bottom: 10px;
+            line-height: 20px;
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
             .imgbox {
               width: 60px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
             }
             img {
-              margin-left: 20px;
+              margin-left: 6px;
             }
           }
         }
       }
     }
   }
+  .smallBox {
+    .page1Box {
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .boxleft {
+        width: 90vw;
+        .blTop {
+          width: 100%;
+          height: 80px;
+          margin-bottom: 30px;
+          padding-top: 20px;
+          display: flex;
+          align-items: flex-end;
+          overflow: hidden;
+          img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+          }
+          span {
+            margin-left: 20px;
+            font-size: 40px;
+            text-shadow: -1px 0 3px #eeeeee;
+            font-family: KaiTi;
+          }
+        }
+        .blMid1 {
+          height: 50px;
+          padding: 10px 20px;
+          margin-bottom: 10px;
+          display: flex;
+          align-items: center;
+          overflow-x: auto;
+        }
+        .blMid2 {
+          height: 180px;
+          padding: 10px 20px;
+        }
+        .blBot {
+          display: flex;
+          align-items: center;
+          height: 60px;
+          // margin-top: 10px;
+          img {
+            margin-right: 10px;
+          }
+        }
+      }
+      .boxRight {
+        display: none;
+      }
+    }
+  }
   .noneBox {
     display: none;
-  }
-  .footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 45px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #00000040;
-    color: #fefefe;
-    font-size: 13px;
-    a {
-      color: #fefefe;
-    }
   }
 }
 </style>
