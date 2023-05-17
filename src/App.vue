@@ -6,7 +6,16 @@
           <div class="page1Box">
             <div class="boxleft">
               <div class="blTop">
-                <img class="cards" src="@/assets/imgs/headpic.jpg" alt="" />
+                <div class="cards headpicBox" @click="toMusic">
+                  <img
+                    :class="isMusic ? 'headpic musicIng' : 'headpic'"
+                    src="@/assets/imgs/headpic.jpg"
+                    alt=""
+                  />
+                  <div class="mask"></div>
+                  <i class="el-icon-video-play" v-if="!isMusic" />
+                  <i class="el-icon-video-pause" v-else />
+                </div>
                 <span>{{ $config.nameCn }}</span>
               </div>
               <div class="blMid1 cards">
@@ -87,6 +96,11 @@
       </main>
     </div>
     <webFooter :screenType="screenType" />
+    <audio
+      ref="alertAudioEl"
+      style="display: none"
+      src="http://m801.music.126.net/20230517181229/2984002ed49d9fd9d90de5b46be07cc5/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/14096513422/df95/bfad/2e9e/cf623d6ebd32f754e24a4017caa261db.mp3"
+    />
   </div>
 </template>
 <script>
@@ -120,6 +134,7 @@ export default {
       contatctList: [],
       websiteList: [],
       typedList: ["hello", "欢迎光临我的主页"],
+      isMusic: false,
     };
   },
   created() {
@@ -246,6 +261,14 @@ export default {
         });
       }
     },
+    toMusic() {
+      this.isMusic = !this.isMusic;
+      if (this.isMusic) {
+        this.$refs.alertAudioEl.play();
+      } else {
+        this.$refs.alertAudioEl.pause();
+      }
+    },
   },
 };
 </script>
@@ -292,16 +315,66 @@ export default {
           display: flex;
           align-items: flex-end;
           overflow: hidden;
-          img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-          }
           span {
             margin-left: 20px;
             font-size: 50px;
             text-shadow: -1px 0 3px #eeeeee;
             font-family: KaiTi;
+          }
+          .headpicBox {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            position: relative;
+            .mask {
+              position: absolute;
+              display: none;
+              border-radius: 50%;
+              left: 0;
+              top: 0;
+              width: 120px;
+              height: 120px;
+              background-color: rgba(0, 0, 0, 0.4);
+            }
+
+            i {
+              display: none;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              width: 30px;
+              height: 30px;
+              font-size: 30px;
+              margin-left: -15px;
+              margin-top: -15px;
+            }
+          }
+          .headpicBox:hover {
+            i {
+              display: block;
+            }
+            .mask {
+              display: block;
+            }
+          }
+          .headpic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            animation: rotation 15s linear infinite;
+            animation-play-state: paused;
+          }
+          .musicIng {
+            animation-play-state: running;
+          }
+          @keyframes rotation {
+            0% {
+              -webkit-transform: rotate(0deg);
+            }
+
+            100% {
+              -webkit-transform: rotate(360deg);
+            }
           }
         }
         .blMid1 {
